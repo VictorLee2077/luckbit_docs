@@ -1,12 +1,14 @@
 # Luckbit Wallet 隐私政策
 
+语言：简体中文 | [English](privacy-policy.en.html) | [繁體中文](privacy-policy.zh-TW.html) | [日本語](privacy-policy.ja.html) | [한국어](privacy-policy.ko.html) | [Français](privacy-policy.fr.html) | [Español](privacy-policy.es.html) | [Русский](privacy-policy.ru.html) | [العربية](privacy-policy.ar.html)
+
 最后更新：2026-01-31
 
 本隐私政策适用于 Luckbit Wallet 浏览器扩展（以下简称“本扩展”）。本扩展为非托管钱包，私钥仅在本地加密保存，我们不托管、不接触用户私钥或资产。
 
 ## 1. 我们收集哪些信息
 我们**不会收集、存储或出售**任何可识别用户身份的信息。  
-本扩展不要求注册账号，也不需要登录才能使用核心功能。
+本扩展不要求注册账号，也不需要登录即可使用核心功能。
 
 ## 2. 本地数据存储
 为实现钱包功能，本扩展会在**用户本地设备**保存以下数据（仅本地存储，不上传）：
@@ -42,5 +44,4 @@
 如有隐私相关问题，请联系：  
 邮箱：info@luckbit.link  
 团队：luckbit  
-隐私政策链接：`https://victorlee2077.github.io/luckbit_docs/privacy-policy.html`
-
+隐私政策链接：https://victorlee2077.github.io/luckbit_docs/privacy-policy.html
