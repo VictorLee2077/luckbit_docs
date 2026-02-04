@@ -2,7 +2,7 @@
 
 语言：简体中文 | [English](privacy-policy.en.html) | [繁體中文](privacy-policy.zh-TW.html) | [日本語](privacy-policy.ja.html) | [한국어](privacy-policy.ko.html) | [Français](privacy-policy.fr.html) | [Español](privacy-policy.es.html) | [Русский](privacy-policy.ru.html) | [العربية](privacy-policy.ar.html)
 
-最后更新：2026-01-31
+最后更新：2026-02-05
 
 本隐私政策适用于 Luckbit Wallet 浏览器扩展（以下简称“本扩展”）。本扩展为非托管钱包，私钥仅在本地加密保存，我们不托管、不接触用户私钥或资产。
 
@@ -29,10 +29,47 @@
 这些通信仅用于完成钱包功能，本扩展**不会**将用户数据共享或出售给第三方。
 
 ## 4. 权限说明（隐私相关）
-- `storage` / `unlimitedStorage`：用于本地保存钱包数据与设置
-- `tabs` / `activeTab`：用于与当前 DApp 页面交互、连接授权与打开必要页面
-- `alarms`：用于自动锁定计时器
-- `<all_urls>` 主机权限：用于在任意 DApp 页面注入 Provider 并完成授权流程
+
+本扩展请求以下浏览器权限以实现钱包功能。我们承诺**不会收集您的浏览历史或网站数据**。
+
+### storage / unlimitedStorage
+- **用途**：使用 chrome.storage.local API 在本地设备上持久化钱包数据
+- **存储内容**：
+  - 加密的私钥和助记词（使用 AES-GCM 加密）
+  - 账户列表和余额缓存
+  - 网络配置和 RPC 端点设置
+  - 已连接站点列表
+  - 交易历史记录
+- **安全措施**：所有敏感数据使用 AES-GCM 加密算法加密，密钥派生使用 scrypt 算法，确保即使设备被盗也无法读取明文数据
+- **数据位置**：所有数据仅存储在您的本地设备上，不会上传到任何服务器
+
+### tabs
+- **用途**：管理浏览器标签页，用于以下场景
+- **具体使用**：
+  - 首次安装时打开欢迎页面（chrome.tabs.create）
+  - 查询当前标签页以发送消息（chrome.tabs.query）
+  - 通知内容脚本断开连接（chrome.tabs.sendMessage）
+- **隐私保护**：我们不会读取或记录您的浏览历史，仅在必要时与特定标签页通信
+
+### alarms
+- **用途**：实现自动锁定计时器功能
+- **具体使用**：
+  - 创建定时器（chrome.alarms.create）
+  - 清除定时器（chrome.alarms.clear）
+  - 监听定时器触发（chrome.alarms.onAlarm）
+- **功能说明**：当您设置的自动锁定时间到期后，钱包会自动锁定以保护您的资产安全
+
+### <all_urls> 主机权限
+- **用途**：在您访问的网站中注入 Web3 提供者（window.ethereum）
+- **具体使用**：
+  - 内容脚本注入：在网页加载时注入 Web3 提供者接口
+  - RPC 调用：向区块链节点（如 Infura、Alchemy）发送交易和查询请求
+  - 区块链浏览器 API：查询交易状态和账户信息（如 Etherscan）
+- **访问的主机**：
+  - 您主动访问的所有网站（用于 Web3 提供者注入）
+  - 区块链 RPC 端点（用于发送交易和查询）
+  - 区块链浏览器 API（用于查询链上数据）
+- **隐私承诺**：这是所有 Web3 钱包的标准功能。我们**不会收集您的浏览历史或网站数据**，仅在您主动连接钱包时与网站交互
 
 ## 5. 数据安全
 我们采用本地加密机制与自动锁定策略保护用户数据。请妥善保管您的助记词与密码，丢失后无法恢复。
